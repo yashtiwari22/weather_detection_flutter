@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:weather_detection_app/screens/city_screen.dart';
 import 'package:weather_detection_app/utilities/constants.dart';
 import 'package:weather_detection_app/services/weather.dart';
@@ -52,19 +53,11 @@ class _LocationScreenState extends State<LocationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: const AssetImage('images/location_background.jpg'),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-                Colors.white.withOpacity(0.8), BlendMode.dstATop),
-          ),
-        ),
+        color: Colors.black,
         constraints: const BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -108,28 +101,36 @@ class _LocationScreenState extends State<LocationScreen> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15.0),
-                child: Row(
-                  children: <Widget>[
-                    Text(
-                      '$temperature°',
-                      style: kTempTextStyle,
-                    ),
-                    const Text(
-                      '☀️',
-                      style: kConditionTextStyle,
-                    ),
-                  ],
-                ),
+              const SizedBox(
+                height: 120,
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 15.0, bottom: 15.0),
-                child: Text(
-                  '$message in $cityName !',
-                  textAlign: TextAlign.right,
-                  style: kMessageTextStyle,
-                ),
+              Column(
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        '$temperature°',
+                        style: kTempTextStyle,
+                      ),
+                      const Text(
+                        '☀️',
+                        style: kConditionTextStyle,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 100.0),
+                    child: Text(
+                      '$message in $cityName !',
+                      textAlign: TextAlign.center,
+                      style: kMessageTextStyle,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
